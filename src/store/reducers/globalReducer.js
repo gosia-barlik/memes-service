@@ -1,4 +1,4 @@
-import { UPVOTE, DOWNVOTE, TOGGLESTAR } from "../consts";
+import { UPVOTE, DOWNVOTE, TOGGLESTAR, ADDMEME } from "../consts";
 
 const initialState = {
   memes: [
@@ -80,10 +80,16 @@ const toggleStar = (state, searchedId) => {
   state.memes.forEach((item) => {
     if (`star-${item.id}`== searchedId) {
       item.isFavorite = !item.isFavorite;
-
     }
   });
   return state;
+};
+
+const addMeme = (state, meme) => {
+  state.memes.push(meme);
+  console.log(state);
+
+  return state.memes;
 };
 
 export const memeReducer = (state = initialState, action) => {
@@ -102,6 +108,11 @@ export const memeReducer = (state = initialState, action) => {
       return {
         ...state,
         state: toggleStar(state, action.payload)
+    }}
+    case ADDMEME: {
+      return {
+        ...state,
+        memes: addMeme(state, action.payload)
     }}
     default: {
       return state;

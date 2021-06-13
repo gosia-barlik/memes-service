@@ -10,8 +10,8 @@ import Typography from "@material-ui/core/Typography";
 import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
 import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 import IconButton from "@material-ui/core/IconButton";
-import StarBorderIcon from '@material-ui/icons/StarBorder';
-import StarIcon from '@material-ui/icons/Star';
+import StarBorderIcon from "@material-ui/icons/StarBorder";
+import StarIcon from "@material-ui/icons/Star";
 
 const useStyles = makeStyles({
   root: {
@@ -26,11 +26,10 @@ const useStyles = makeStyles({
 });
 
 export default function MemeSingle(props) {
-
   const classes = useStyles();
 
-  const borderStar =  <StarBorderIcon />
-  const filledStar =  <StarIcon />
+  const borderStar = <StarBorderIcon />;
+  const filledStar = <StarIcon />;
 
   return (
     <Card className={classes.root}>
@@ -61,12 +60,12 @@ export default function MemeSingle(props) {
           />
           {props.meme.downvotes}
         </IconButton>
-        <Button size='small' color='primary' onClick={props.onToggleStar} id={`star-${props.meme.id}`}>
+        <Button
+          size='small'
+          color='primary'
+          onClick={props.onToggleStar}
+          id={`star-${props.meme.id}`}>
           {props.meme.isFavorite ? filledStar : borderStar}
-          {/* <StarBorderIcon
-            id={`star-${props.meme.id}`}
-            onClick={props.onToggleStar}
-          /> */}
         </Button>
       </CardActions>
     </Card>

@@ -1,11 +1,11 @@
 import {
   DOWNVOTE,
   UPVOTE,
-  TOGGLESTAR
+  TOGGLESTAR,
+  ADDMEME
 } from "../consts";
 
 export const upvote = (id) => {
-  console.log(id)
   return { type: UPVOTE, payload: id };
 };
 export const downvote = (id) => {
@@ -14,5 +14,9 @@ export const downvote = (id) => {
 export const toggleStar = (id) => {
   return { type: TOGGLESTAR, payload: id };
 };
+export const addMeme = (meme) => {
+  return { type: ADDMEME, payload: meme };
+};
+
 
 

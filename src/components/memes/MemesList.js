@@ -4,7 +4,11 @@ import Grid from "@material-ui/core/Grid";
 import MemeSingle from "./MemeSingle";
 import { Container, Box } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
-import { upvote, downvote, toggleStar } from "../../store/actions/globalActions";
+import {
+  upvote,
+  downvote,
+  toggleStar,
+} from "../../store/actions/globalActions";
 
 const useStyles = makeStyles({
   root: {
@@ -21,7 +25,6 @@ export default function MemesList(props) {
   const memeReducer = useSelector((state) => state);
 
   const onUpvote = (e) => {
-    // console.log(e.target);
     dispatch(upvote(e.currentTarget.id));
   };
 
@@ -30,19 +33,12 @@ export default function MemesList(props) {
   };
 
   const onToggleStar = (e) => {
-    console.log(e.currentTarget);
-    // console.log(memeReducer);
     dispatch(toggleStar(e.currentTarget.id));
   };
 
   const filterMemes = (meme) => {
-    console.log(props.isFavorite);
-    console.log('lorem');
-
-    if(props.isFavorite)
-      return meme.isFavorite == true;
-    else
-      return meme.isHot == props.isHot;
+    if (props.isFavorite) return meme.isFavorite == true;
+    else return meme.isHot == props.isHot;
   };
 
   const memesList = memeReducer.memes.filter(filterMemes);

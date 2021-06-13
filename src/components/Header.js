@@ -37,7 +37,7 @@ export default function Header() {
           </Button>
 
           <Button color='inherit' className='menu-button'>
-            <NavLink to='/favourite' className={classes.button}>
+            <NavLink to='/favourites' className={classes.button}>
               Favourites
             </NavLink>
           </Button>

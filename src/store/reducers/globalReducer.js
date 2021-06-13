@@ -87,8 +87,6 @@ const toggleStar = (state, searchedId) => {
 
 const addMeme = (state, meme) => {
   state.memes.push(meme);
-  console.log(state);
-
   return state.memes;
 };
 

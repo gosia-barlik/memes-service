@@ -1,22 +1,34 @@
 import React from "react";
 import { Container, Box } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
-import { upvote, downvote } from "../store/actions/globalActions";
+import { upvote, downvote, toggleStar } from "../store/actions/globalActions";
 
 import MemesList from "./memes/MemesList";
 
-export default function Regular() {
+export default function Regular(props) {
   const dispatch = useDispatch();
   const memeReducer = useSelector((state) => state);
-  
+
   const onUpvote = (e) => {
-    // console.log(e.target.parentNode.id);
-    dispatch(upvote(e.target.parentNode.id));
+    // console.log(e.target);
+    dispatch(upvote(e.target.id));
   };
 
   const onDownvote = (e) => {
-    dispatch(downvote(e.target.parentNode.id));
+    dispatch(downvote(e.target.id));
   };
+
+  const onToggleStar = (e) => {
+    // console.log(e.target.parentNode.parentNode.id);
+    // console.log(memeReducer);
+    dispatch(toggleStar(e.target.parentNode.parentNode.id));
+  };
+
+  const filterDatabase = (meme) => {
+    return meme.isHot == props.isHot;
+  };
+
+  const memesList = memeReducer.memes.filter(filterDatabase);
 
   return (
     <Box
@@ -27,7 +39,12 @@ export default function Regular() {
       }}>
       <Container maxWidth={false}>
         <Box sx={{ pt: 3 }}>
-          <MemesList database={memeReducer} onUpvote={onUpvote} onDownvote={onDownvote}/>
+          <MemesList
+            memesList={memesList}
+            onUpvote={onUpvote}
+            onDownvote={onDownvote}
+            onToggleStar={onToggleStar}
+          />
         </Box>
       </Container>
     </Box>

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import  Regular from "./components/Regular";
-import { Header } from "./components/Header";
-import Hot from "./components/Hot"
+import  Header  from "./components/Header";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 
@@ -14,10 +13,10 @@ class App extends Component {
             <Header />
               <Switch>
                 <Route exact path='/hot'>
-                  <Hot/>
+                  <Regular isHot={true}/>
                 </Route>
                 <Route exact path='/regular'>
-                  <Regular />
+                  <Regular isHot={false}/>
                 </Route>
               </Switch>
           </div>

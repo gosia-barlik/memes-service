@@ -32,6 +32,9 @@ export default function Header () {
             <Button color='inherit' className='menu-button'>
               <NavLink to='/regular' className={classes.button}>Regular</NavLink>
             </Button>
+            <Button color='inherit' className='menu-button'>
+              <NavLink to='/favourite' className={classes.button}>Favourites</NavLink>
+            </Button>
           </Grid>
         </Container>
       </AppBar>

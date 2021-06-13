@@ -57,3 +57,6 @@ body {
   width:330px;
 }
 
+.MuiIconButton-label.MuiSvgIcon-root path {
+  pointer-events: none;
+}

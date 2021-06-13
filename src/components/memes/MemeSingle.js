@@ -61,13 +61,13 @@ export default function MemeSingle(props) {
           />
           {props.meme.downvotes}
         </IconButton>
-        <IconButton size='small' color='primary' onClick={props.onToggleStar} id={`star-${props.meme.id}`}>
-          {props.meme.isStar ? filledStar : borderStar}
+        <Button size='small' color='primary' onClick={props.onToggleStar} id={`star-${props.meme.id}`}>
+          {props.meme.isFavorite ? filledStar : borderStar}
           {/* <StarBorderIcon
             id={`star-${props.meme.id}`}
             onClick={props.onToggleStar}
           /> */}
-        </IconButton>
+        </Button>
       </CardActions>
     </Card>
   );

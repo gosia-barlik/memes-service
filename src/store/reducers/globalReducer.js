@@ -9,7 +9,7 @@ const initialState = {
       img: "./static/images/mem1.jpg",
       id: 1,
       isHot: false,
-      isStar: false
+      isFavorite: false
     },
     {
       title: "Mem 2",
@@ -18,7 +18,7 @@ const initialState = {
       img: "./static/images/mem2.jpg",
       id: 2,
       isHot: false,
-      isStar: false
+      isFavorite: false
     },
     {
       title: "Mem 3",
@@ -27,7 +27,7 @@ const initialState = {
       img: "./static/images/mem3.jpg",
       id: 3,
       isHot: false,
-      isStar: false
+      isFavorite: false
     },
     {
       title: "Mem 4",
@@ -36,7 +36,7 @@ const initialState = {
       img: "./static/images/mem4.jpg",
       id: 4,
       isHot: false,
-      isStar: false
+      isFavorite: false
     },
     {
       title: "Mem 5",
@@ -45,7 +45,7 @@ const initialState = {
       img: "./static/images/mem5.jpg",
       id: 5,
       isHot: false,
-      isStar: false
+      isFavorite: false
     },
   ],
   
@@ -79,8 +79,8 @@ const downVote = (state, searchedId) => {
 const toggleStar = (state, searchedId) => {
   state.memes.forEach((item) => {
     if (`star-${item.id}`== searchedId) {
-      item.isStar = !item.isStar;
-      console.log(item.isStar);
+      item.isFavorite = !item.isFavorite;
+
     }
   });
   return state;

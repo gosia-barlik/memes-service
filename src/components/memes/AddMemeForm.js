@@ -3,14 +3,36 @@ import { TextField, Button } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { addMeme } from "../../store/actions/globalActions";
+import { makeStyles } from "@material-ui/core/styles";
+import Alert from '@material-ui/lab/Alert';
+
+
+const useStyles = makeStyles({
+  primaryButton: {
+    marginTop: 12,
+  },
+  media: {
+    height: 340,
+    backgroundSize: "contain",
+    backgroundRepeat: "noRepeat",
+  },
+  form : {
+    maxWidth: 500
+  },
+  alert : {
+    marginTop: 10
+  }
+});
 
 export default function AddMemeForm() {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const memeReducer = useSelector((state) => state);
 
   const [imgData, setImgData] = useState(null);
   const [title, setTitle] = useState("");
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [validationErrors, setValidationErrors] = useState([]);
 
   const onChangePicture = (e) => {
     const reader = new FileReader();
@@ -29,7 +51,20 @@ export default function AddMemeForm() {
     return newMemeId;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+      setValidationErrors([]);
+      let localValidationErrors = [];
+
+    if(imgData==null)
+      localValidationErrors.push('You need to upload an image!');
+
+    if(!title || title.length==0) 
+      localValidationErrors.push('You need to add a title!')    
+
+      
+    if(localValidationErrors.length>0){
+      setValidationErrors(localValidationErrors);
+    }else{
       const newMeme = {};
       const memeId = getNewMemeId();
       localStorage.setItem(`image-${memeId}`, imgData);
@@ -41,22 +76,29 @@ export default function AddMemeForm() {
       newMeme.downvotes = 0;
       newMeme.isHot = false;
       newMeme.isFavorite = false;
-
+      
       dispatch(addMeme(newMeme));
       setIsFormSubmitted(true);
+    }
   };
-
+ 
   return (
+   
     <>
-      {isFormSubmitted && imgData && <Redirect to='/regular' />}
-      <form autoComplete='off' onSubmit={handleSubmit} >
+      {isFormSubmitted && <Redirect to='/regular' />}
+      {validationErrors && 
+        validationErrors.map(
+        (error)=><Alert severity="error" className={classes.alert}>{error}</Alert>)
+      }
+      <form 
+      autoComplete='off' 
+      className = {classes.form} >
         <TextField
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           label='Title'
           fullWidth={true}
           margin='normal'
-          required={true}
           inputProps={{ style: { textAlign: "left" } }}
         />
 
@@ -64,20 +106,22 @@ export default function AddMemeForm() {
           variant='outlined'
           component='label'
           fullWidth={true}
-          margin='normal'>
+          margin='normal'
+          className={classes.primaryButton}>
           Add image
           <input type='file' hidden onChange={onChangePicture} />
         </Button>
         <span className='imagePreview'>
-          <img className='imagePreview' src={imgData} />
+          <img className='imagePreview' src={imgData} alt={imgData ?'meme preview':''}/>
         </span>
 
         <Button
-          type='submit'
+          onClick={handleSubmit}
           variant='contained'
           color="primary"
           fullWidth={true}
-          margin='normal'>
+          margin='normal'
+          className={classes.primaryButton}>
           Save
         </Button>
       </form>

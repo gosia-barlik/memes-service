@@ -11,52 +11,52 @@ body {
   font-family: "Montserrat";
 }
 
-
 /* HEADER */
-.menu-button {
-  height: 40px !important;
-  margin-top: 25px !important;
-  padding: 5px;
-}
 
 .menu-button a {
   display: inline-block;
   text-decoration: none;
   font-family: "Montserrat";
+  color: #3f51b5;
 }
 
 .app-bar {
+  display: flex;
+  flex-direction: row;
   background-color: rgb(250, 250, 253) !important;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05) !important;
 }
 
-
 /* MAIN */
-.main-container {
+.grid-container-header {
+  display: block;
+  padding-top: 30px;
+  height: 50px;
+}
+
+.memeslist-container {
+  margin-top: 150px !important;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: auto;
+  color: #3f51b5;
 }
 
-.grid-container-header {
-  padding-top: 30px;
-  height: 150px;
-}
-
-.memeslist-container{
-  margin-top: 150px !important;;
-  display: flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content: center;
-}
-
-.MuiCard-root{
-  margin:20px;
-  width:330px;
+.MuiCard-root {
+  margin: 20px;
+  width: 330px;
 }
 
 .MuiIconButton-label.MuiSvgIcon-root path {
   pointer-events: none;
+}
+
+.MuiContainer-root {
+  padding-bottom: 20px;
+}
+
+.imagePreview {
+  max-width:500px;
+  padding-top:10px
 }

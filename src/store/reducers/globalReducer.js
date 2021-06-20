@@ -53,20 +53,19 @@ const initialState = {
 
 const upVote = (state, searchedId) => {
   state.memes.forEach((item) => {
-    if (`up-${item.id}`== searchedId) {
+    if (`up-${item.id}`=== searchedId) {
       item.upvotes++;
       if(item.upvotes-item.downvotes > 5) {
         item.isHot=true; 
       }
     }
   });
-  // state.memes.sort((a,b) => (a.id> b.id) ? 1 : ((b.id > a.id) ? -1 : 0));
   return state;
 };
 
 const downVote = (state, searchedId) => {
   state.memes.forEach((item) => {
-    if (`down-${item.id}`== searchedId) {
+    if (`down-${item.id}`=== searchedId) {
       item.downvotes++;
       if(item.upvotes-item.downvotes <= 5) {
         item.isHot=false; 
@@ -78,7 +77,7 @@ const downVote = (state, searchedId) => {
 
 const toggleStar = (state, searchedId) => {
   state.memes.forEach((item) => {
-    if (`star-${item.id}`== searchedId) {
+    if (`star-${item.id}`=== searchedId) {
       item.isFavorite = !item.isFavorite;
     }
   });

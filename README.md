@@ -4,7 +4,7 @@
 * [Setup](#setup)
 
 ## General info
-This is a simple memes service application that provides functions such as: add meme, upvote and downvote.
+This is a simple memes service application that provides functions such as: add meme, upvote, downvote and add to favourites.
 	
 ## Technologies
 Project is created with:
@@ -14,7 +14,7 @@ Project is created with:
 	
 ## Setup
 
-To run this application, you'll need [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+To run this application, you'll need [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line type:
 
 ```bash
 # Clone this repository

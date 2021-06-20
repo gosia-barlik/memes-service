@@ -1,14 +1,12 @@
 {
-  "name": "2-data-example",
-  "version": "0.1.0",
+  "name": "meme-service",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@mdi/font": "^5.9.55",
-    "html-react-parser": "^1.2.5",
-    "newsapi": "^2.4.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-redux": "^7.2.3",
@@ -17,14 +15,8 @@
     "redux": "^4.0.5"
   },
   "scripts": {
-    "start:db": "json-server --watch database.json",
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "build": "react-scripts build"
   },
   "browserslist": [
     ">0.2%",
@@ -32,8 +24,7 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {
-    "babel-preset-stage-1": "^6.24.1",
-    "json-server": "^0.15.1"
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }

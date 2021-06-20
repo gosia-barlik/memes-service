@@ -1,15 +1,26 @@
 import React from "react";
-import { BrowserRouter as Router, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import AppBar from "@material-ui/core/AppBar";
 import { makeStyles } from "@material-ui/core/styles";
 import { Container, Button, Grid } from "@material-ui/core";
+import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles({
   button: {
+    height: 25,
     "&.active": {
       fontWeight: 700,
     },
   },
+  logo: {
+    fontSize: 24,
+    paddingBottom: 5
+  },
+  container: {
+    display:'flex',
+    flexDirection:'row',
+    alignContent: 'stretch'
+  }
 });
 
 export default function Header() {
@@ -17,13 +28,17 @@ export default function Header() {
 
   return (
     <AppBar className='app-bar'>
-      <Container maxWidth='xl'>
+      <Container maxWidth='xl'className={classes.container}>
+        <Button color='inherit' className='menu-button logo-button'>
+          <NavLink to='/' className={`${classes.logo} ${classes.button}`}>
+            M
+          </NavLink>
+        </Button>
         <Grid
           container
           spacing={4}
-          justify='center'
+          justify='flex-end'
           className='grid-container-header'>
-
           <Button color='inherit' className='menu-button'>
             <NavLink to='/regular' className={classes.button}>
               Regular
@@ -44,10 +59,9 @@ export default function Header() {
 
           <Button color='inherit' className='menu-button'>
             <NavLink to='/add' className={classes.button}>
-              Add meme
+           <AddIcon/>
             </NavLink>
           </Button>
-          
         </Grid>
       </Container>
     </AppBar>

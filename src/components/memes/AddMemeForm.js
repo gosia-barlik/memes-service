@@ -11,11 +11,6 @@ const useStyles = makeStyles({
   primaryButton: {
     marginTop: 12,
   },
-  media: {
-    height: 340,
-    backgroundSize: "contain",
-    backgroundRepeat: "noRepeat",
-  },
   form : {
     maxWidth: 500
   },
